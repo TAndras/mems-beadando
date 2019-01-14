@@ -21,7 +21,6 @@ class SSense:
     
     def __init__(self, master = None):
         self.sense = SenseHat()
-        self.autorun = True
         self.sense.clear()
 
                 
