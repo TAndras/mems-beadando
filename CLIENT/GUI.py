@@ -114,7 +114,7 @@ class SenseSystem(tk.Frame):
         self.scan.onDisplay()
         sch = sched.scheduler(time.time,time.sleep)
         while self.auto:
-            sch.enter(10,1,self.scan.senseActivate, kwargs= {'ttemp': ttemp,'thum': thum})
+            sch.enter(5,1,self.scan.senseActivate, kwargs= {'ttemp': ttemp,'thum': thum})
             sch.run()
         self.scan.offDisplay()
         print("autómata működés megállítva!")
