@@ -26,10 +26,10 @@ class SSense:
                 
 
     def tempStr(self):
-        return str(round(self.sense.get_temperature()))
+        return str(round(self.sense.get_temperature() - 10))
 
     def humStr(self):
-        return str(round(self.sense.get_humidity()))
+        return str(round(self.sense.get_humidity() + 10))
 
     def onDisplay(self):
         self.sense.set_pixels(run_pixels)
@@ -40,7 +40,7 @@ class SSense:
     def senseActivate(self,ttemp,thum):
         
         
-        temperature = self.sense.get_temperature()
+        temperature = self.sense.get_temperature() - 10
         if temperature <= (ttemp-TOLERANCE) or temperature >= (ttemp+TOLERANCE):
             if temperature < ttemp-TOLERANCE:
                 cli.locSend("Fűtés!")
@@ -48,7 +48,7 @@ class SSense:
             else:
                 cli.locSend("Hűtés!")
                 print("Hűtés!")
-        humidity = self.sense.get_humidity()
+        humidity = self.sense.get_humidity() + 10
         if humidity <= (thum-TOLERANCE) or humidity >= (thum+TOLERANCE):
             if humidity <= thum-TOLERANCE:
                 cli.locSend("Párásítás!")
@@ -57,7 +57,4 @@ class SSense:
                 cli.locSend("párátlanítás!")
                 print("Párátlanítás!")
 
-'''
-tempActivate(20.0,3.0)
-humActivate(40.0,3.0)
-'''
+
